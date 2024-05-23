@@ -18,6 +18,11 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
+ul {
+  list-style: none;
+}
+
 a:hover {
   color: #535bf2;
 }
@@ -46,9 +51,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -59,10 +66,95 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #004a8f;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="text"] {
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 4px;
+  outline: none;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  border: none;
+  background-color: #fff;
+  color: #000000;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #969696;
+}
+
+.image-gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 40px 0 0;
+}
+
+.image-gallery li {
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.loader {
+  margin: 20px auto;
+}
+
+.error-message {
+  color: red;
+  margin: 20px 0;
+}
+
+.load-more-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px auto;
 }

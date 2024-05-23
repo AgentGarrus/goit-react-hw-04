@@ -1,6 +1,8 @@
+import './ImageCard.css';
+
 const ImageCard = ({ image }) => {
   return (
-    <div>
+    <div className="image-card">
       <img src={image.urls.small} alt={image.alt_description} />
     </div>
   );

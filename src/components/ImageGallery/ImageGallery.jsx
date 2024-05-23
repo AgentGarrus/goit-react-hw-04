@@ -1,4 +1,5 @@
 import ImageCard from '../ImageCard/ImageCard.jsx';
+import './ImageGallery.css';
 
 const ImageGallery = ({ images }) => {
   return (
