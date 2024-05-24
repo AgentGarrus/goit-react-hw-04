@@ -1,15 +1,17 @@
 import Modal from 'react-modal';
+import './ImageModal.css';
 
 Modal.setAppElement('#root');
 
 const ImageModal = ({ isOpen, onRequestClose, image }) => (
-  <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-    {image && (
+  <Modal
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
+    overlayClassName="modal-overlay"
+    className="modal-content"
+  >{image && (
       <div>
-        <img src={image.urls.regular} alt={image.alt_description} />
-        <p>{image.description || image.alt_description}</p>
-        <p>By: {image.user.name}</p>
-        <p>Likes: {image.likes}</p>
+        <img className="modal-image" src={image.urls.regular} alt={image.alt_description} />
       </div>
     )}
   </Modal>

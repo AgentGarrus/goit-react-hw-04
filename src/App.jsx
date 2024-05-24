@@ -20,16 +20,20 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const fetchImages = async (searchQuery, pageNumber) => {
-    setLoading(true);
     try {
-      const response = await axios.get(
-        `https://api.unsplash.com/search/photos?query=${searchQuery}&page=${pageNumber}&client_id=${UNSPLASH_ACCESS_KEY}`
-      );
+      setLoading(true);
+      const response = await axios.get('https://api.unsplash.com/search/photos', {
+        params: {
+          query: searchQuery,
+          page: pageNumber,
+          client_id: UNSPLASH_ACCESS_KEY,
+        },
+      });
       setImages((prevImages) =>
         pageNumber === 1 ? response.data.results : [...prevImages, ...response.data.results]
       );
       setError(null);
-    } catch (err) {
+    } catch (error) {
       setError('Failed to fetch images. Please try again.');
     } finally {
       setLoading(false);
@@ -43,9 +47,8 @@ const App = () => {
   };
 
   const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchImages(query, nextPage);
+    setPage((prevPage) => prevPage + 1);
+    fetchImages(query, page + 1);
   };
 
   return (
@@ -53,7 +56,7 @@ const App = () => {
       <Toaster />
       <SearchBar onSubmit={handleSearchSubmit} />
       {error && <ErrorMessage message={error} />}
-      <ImageGallery images={images} />
+      <ImageGallery images={images} setSelectedImage={setSelectedImage} />
       {loading && <Loader />}
       {images.length > 0 && !loading && <LoadMoreBtn onClick={handleLoadMore} />}
       {selectedImage && (
